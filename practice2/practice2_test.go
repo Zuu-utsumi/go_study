@@ -19,13 +19,18 @@ func TestFibonacci(t *testing.T) {
 		}
 	}
 
-	// ArgumentError
+	// return ArgumentError
 	_, err := Fibonacci(0)
 	if err == nil || err.Error() != "Bad argument: 0" {
 		t.Error("Should raise ArgumentError when received 0")
 	}
 
-	// break when maxnum
+	_, err2 := Fibonacci(-10)
+	if err2 == nil || err2.Error() != "Bad argument: -10" {
+		t.Error("Should raise ArgumentError when received -10")
+	}
+
+	// limit length of array until maxNum
 	actual2, _ := Fibonacci(100)
 	if len(actual2) >= maxNum {
 		t.Errorf("Should limit %d", maxNum)
